@@ -5,43 +5,43 @@ const students = [
      
     "name": "Аліна Будь",
     "grade": 7,
-    "classes": ["Group"]
+    "classes": ["group"]
     },
     {
     
     "name": "Олексій Колесніков",
     "grade": 7,
-    "classes": ["Group"]
+    "classes": ["group"]
     },
     {
       
     "name": "Нікіта Чепурной",
     "grade": 7,
-    "classes": ["Group", "Individual"]
+    "classes": ["group", "individual"]
     },
     {
     
     "name": "Микита Заіка",
     "grade": 7,
-    "classes": ["Group"]
+    "classes": ["group"]
     },
     {
     
     "name": "Марина Зімарина",
     "grade": 7,
-    "classes": ["Group"]
+    "classes": ["group"]
     },
     {
     
     "name": "Вікторія Летун",
     "grade": 7,
-    "classes": ["Individual"]
+    "classes": ["individual"]
     }, 
     {
     
     "name": "Аліса Благоразумна",
     "grade": 7,
-    "classes": ["Individual"]
+    "classes": ["individual"]
     },    
 
 //grade 6
@@ -49,19 +49,19 @@ const students = [
     
     "name": "Кирил Колесніков",
     "grade": 6,
-    "classes": ["Group"]
+    "classes": ["group"]
     }, 
     {
     
     "name": "Кіра Кабанчук",
     "grade": 6,
-    "classes": ["Group", "Individual"]
+    "classes": ["group", "individual"]
     }, 
     {
     
     "name": "Саша ",
     "grade": 6,
-    "classes": ["Group"]
+    "classes": ["group"]
     }, 
 
 //grade 2
@@ -69,19 +69,19 @@ const students = [
     
     "name": "Варвара Врагалева",
     "grade": 2,
-    "classes": ["Group"]
+    "classes": ["group"]
     }, 
     {
     
     "name": "Нікіта Турко",
     "grade": 2,
-    "classes": ["Group"]
+    "classes": ["group"]
     },
     {
     
     "name": "Тея Рохол",
     "grade": 2,
-    "classes": ["Individual"]
+    "classes": ["individual"]
     },
 
 //grade 8
@@ -89,7 +89,7 @@ const students = [
     
     "name": "Рада Твердюк",
     "grade": 8,
-    "classes": ["Individual"]
+    "classes": ["individual"]
     },
 ];
 
@@ -99,9 +99,7 @@ var gradesUsed = [];
 var studentName = [];
 
 for(var i=0;i<students.length;i++){
-    //i=0
-    //i=1
-    //i=2
+
     var singleStudent = students[i];
     var opt = document.createElement('option');
     opt.value = singleStudent.name;
@@ -128,21 +126,23 @@ const nameDropdown = document.getElementById('student-name');
 
 document.getElementById('grade-selector').addEventListener("change", (event) => {
     const gradeSelector = document.getElementById('grade-selector');
-    const selectedValue = gradeSelector.value;
+    const selectedValue = parseInt(gradeSelector.value);
+    
+    switch (selectedValue) {
+        case 6:
+        case 7:
+        case 8:
+        case 2:
+            filteredStudents = students.filter(student => student.grade === selectedValue)
 
-    if (selectedValue === '6') {
-        const filteredStudents = students.filter(student => student.grade === 6)     
+            break;
+        default:
+            filteredStudents = [];
 
-        filterStudentsFromDropDown(filteredStudents);
-    } else if (selectedValue === '7'){
-        const filteredStudents = students.filter(student => student.grade === 7) 
-        filterStudentsFromDropDown(filteredStudents);
-    }
+    };
+
+    filterStudentsFromDropDown(filteredStudents);
 });
-
-// switch statement
-
-
 
 function filterStudentsFromDropDown(students){
     
@@ -152,12 +152,59 @@ function filterStudentsFromDropDown(students){
         var opt = document.createElement('option');
         opt.value = studentName;
         opt.innerHTML = (`${student.name}`);
-        document.getElementById('student-name').appendChild(opt);
+        nameDropdown.appendChild(opt);
         //console.log(`${student.name}`);
     });
 
 }
- //onchange on the checkbox -- value -- filter by that
+
+
+
+// const groupCheckbox = document.getElementById('group');
+
+const checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+checkboxes.forEach(function(checkbox){
+    //console.log(checkbox);
+
+    checkbox.addEventListener("change", function(event){
+        //console.log(event.target.checked);
+
+        // is checkbox checked-- loop throgh array -- IFONLY is it therenin the classes -- loop again to see which one
+        
+       // console.log(event.target.id)
+
+        
+        students.forEach(function(student){
+            student.classes.forEach(function(classes){
+                //console.log(classes);
+                //console.log(event.target.id)
+                if(classes === event.target.id){
+                    console.log(`${student.name} student is in this group`)
+                }
+            });
+        });
+
+
+    });
+});
+
+console.log(checkboxes);
+
+// groupCheckbox.addEventListener("change", function(event){
+//     console.log(event.target.checked);
+//     //console.log('hihi')
+
+// });
+
+
+
+// const handleChange = (event) => {
+//     groupCheckbox(event.target.chacked)
+// }
+
+
+//onchange on the checkbox -- value -- filter by that
 
 /*by now!
 document.getElementById('grade-selector').addEventListener("change", (event) => {
