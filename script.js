@@ -1,18 +1,18 @@
 const students = [
     {
-        "studentID":'abc',
+     
     "name": "Anna",
     "grade": 7,
     "classes": ["Group", "Individual"]
     },
     {
-        "studentID":'32rdsffs',
+    
     "name": "Alex",
     "grade": 6,
     "classes": ["Group"]
     },
     {
-        "studentID":'sdfkjsdfs',
+      
         "name": "Tjerk",
         "grade": 6,
         "classes": ["Group"]
@@ -57,23 +57,33 @@ document.getElementById('grade-selector').addEventListener("change", (event) => 
     const selectedValue = gradeSelector.value;
 
     if (selectedValue === '6') {
-        const studentsInGrade6 = students.filter(student => student.grade === 6)
+        const filteredStudents = students.filter(student => student.grade === 6)     
 
-        nameDropdown.innerHTML = '<option value="">Select students name</option>';
-    
-        studentsInGrade6.forEach(function (student) {
-
-            var opt = document.createElement('option');
-            opt.value = studentName;
-            opt.innerHTML = (`${student.name}`);
-            document.getElementById('student-name').appendChild(opt);
-            //console.log(`${student.name}`);
-
-        });
-        
-    } 
+        filterStudentsFromDropDown(filteredStudents);
+    } else if (selectedValue === '7'){
+        const filteredStudents = students.filter(student => student.grade === 7) 
+        filterStudentsFromDropDown(filteredStudents);
+    }
 });
 
+// switch statement
+
+
+
+function filterStudentsFromDropDown(students){
+    
+    nameDropdown.innerHTML = '<option value="">Select students name</option>';
+    
+    students.forEach(function (student) {
+        var opt = document.createElement('option');
+        opt.value = studentName;
+        opt.innerHTML = (`${student.name}`);
+        document.getElementById('student-name').appendChild(opt);
+        //console.log(`${student.name}`);
+    });
+
+}
+ //onchange on the checkbox -- value -- filter by that
 
 /*by now!
 document.getElementById('grade-selector').addEventListener("change", (event) => {
