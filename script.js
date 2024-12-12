@@ -1,21 +1,95 @@
 const students = [
+
+//grade 7
     {
      
-    "name": "Anna",
+    "name": "Аліна Будь",
+    "grade": 7,
+    "classes": ["Group"]
+    },
+    {
+    
+    "name": "Олексій Колесніков",
+    "grade": 7,
+    "classes": ["Group"]
+    },
+    {
+      
+    "name": "Нікіта Чепурной",
     "grade": 7,
     "classes": ["Group", "Individual"]
     },
     {
     
-    "name": "Alex",
-    "grade": 6,
+    "name": "Микита Заіка",
+    "grade": 7,
     "classes": ["Group"]
     },
     {
-      
-        "name": "Tjerk",
-        "grade": 6,
-        "classes": ["Group"]
+    
+    "name": "Марина Зімарина",
+    "grade": 7,
+    "classes": ["Group"]
+    },
+    {
+    
+    "name": "Вікторія Летун",
+    "grade": 7,
+    "classes": ["Individual"]
+    }, 
+    {
+    
+    "name": "Аліса Благоразумна",
+    "grade": 7,
+    "classes": ["Individual"]
+    },    
+
+//grade 6
+    {
+    
+    "name": "Кирил Колесніков",
+    "grade": 6,
+    "classes": ["Group"]
+    }, 
+    {
+    
+    "name": "Кіра Кабанчук",
+    "grade": 6,
+    "classes": ["Group", "Individual"]
+    }, 
+    {
+    
+    "name": "Саша ",
+    "grade": 6,
+    "classes": ["Group"]
+    }, 
+
+//grade 2
+    {
+    
+    "name": "Варвара Врагалева",
+    "grade": 2,
+    "classes": ["Group"]
+    }, 
+    {
+    
+    "name": "Нікіта Турко",
+    "grade": 2,
+    "classes": ["Group"]
+    },
+    {
+    
+    "name": "Тея Рохол",
+    "grade": 2,
+    "classes": ["Individual"]
+    },
+
+//grade 8
+    {
+    
+    "name": "Рада Твердюк",
+    "grade": 8,
+    "classes": ["Individual"]
     },
 ];
 
