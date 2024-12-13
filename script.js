@@ -41,6 +41,7 @@ const students = [
     
     "name": "Аліса Благоразумна",
     "grade": 7,
+    "special": true,
     "classes": ["individual"]
     },    
 
@@ -59,7 +60,7 @@ const students = [
     }, 
     {
     
-    "name": "Саша ",
+    "name": "Олександр Мітяєв",
     "grade": 6,
     "classes": ["group"]
     }, 
@@ -160,11 +161,36 @@ function filterStudentsFromDropDown(students){
 
 
 
-// const groupCheckbox = document.getElementById('group');
+//const groupCheckbox = document.getElementById('group');
 
-const checkboxes = document.querySelectorAll('input[type=checkbox]');
 
-checkboxes.forEach(function(checkbox){
+// const checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+// function filterStudentsByClasses() {
+
+//     const selectedClasses = [];
+
+//     checkboxes.forEach(function(checkbox){
+//         if (checkbox.checked) {
+//             selectedClasses.push(checkbox.value);
+          
+//         }
+//     }
+    
+
+
+
+const studentsInGroup = students.filter(student => student.classes.includes("group"));
+console.log(studentsInGroup)
+
+const studentsInIndividual = students.filter(student => student.classes.includes("individual"));
+console.log(studentsInIndividual)
+
+
+
+
+
+/*checkboxes.forEach(function(checkbox){
     //console.log(checkbox);
 
     checkbox.addEventListener("change", function(event){
@@ -175,21 +201,10 @@ checkboxes.forEach(function(checkbox){
        // console.log(event.target.id)
 
         
-        students.forEach(function(student){
-            student.classes.forEach(function(classes){
-                //console.log(classes);
-                //console.log(event.target.id)
-                if(classes === event.target.id){
-                    console.log(`${student.name} student is in this group`)
-                }
-            });
-        });
-
 
     });
 });
-
-console.log(checkboxes);
+*/
 
 // groupCheckbox.addEventListener("change", function(event){
 //     console.log(event.target.checked);
@@ -205,62 +220,3 @@ console.log(checkboxes);
 
 
 //onchange on the checkbox -- value -- filter by that
-
-/*by now!
-document.getElementById('grade-selector').addEventListener("change", (event) => {
-  
-    console.log(`${event}`);
-
-    if(`${event}` === `grade 6`){
-        console.log(`student: ${student.name}`);
-    }
-    
-});
-
-
-
-
-//     console.log('tjerk is cool?');
-// }
-
-// document.getElementById('grade-selector').addEventListener("change", tjerkIsCool);
-
-
-// document.getElementById("grade-selector").addEventListener("change", function(e){
-//     //alert('i changed');
-//     //console.log('i changed iam a changed man!');
-
-// });
-
-
-// function tjerkIsCool(){
-
-//filter out names baseed
-
-/*
-const gr = 
-document.querySelector(grade-selector);
-
-// if the dropdown for grade, changes do something
-
-
-// first filter through either group or individual.
-
-
-// if we select grade 6 only select people that have grade 6 and return that.
-
-// you go through the array once
-
-gr.forEach((student) => {
-    // copyItems.push(stude);
-
-    // this number comes from the input dropdown
-    if(student.grade === 6){
-        console.log(`student: ${student.name}`);
-       // make a new array of selectedStudents
-
-       // and go through this array once to add it to a selectbox
-
-       // documentquery selector to find select box
-    }
-  });*/
