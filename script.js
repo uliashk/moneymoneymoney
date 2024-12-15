@@ -94,7 +94,34 @@ const students = [
     },
 ];
 
-//put grade in the dropdown
+var studentProfile = [];
+
+console.log(students.length)
+
+students.forEach(function (student) {
+    const studentsDiv = document.getElementById('students');
+
+    // Create a label element
+    let label = document.createElement('LABEL');
+
+    // Create a checkbox input element
+    let newCheckbox = document.createElement('INPUT');
+    newCheckbox.setAttribute("type", "checkbox");
+    newCheckbox.setAttribute("id", student.name);
+
+    // Set the label text and associate it with the checkbox
+    label.setAttribute("for", student.name);
+    label.textContent = student.name;
+
+    // Append the checkbox and label to the div
+    label.insertBefore(newCheckbox, label.firstChild);
+    studentsDiv.appendChild(label);
+
+    // Add a line break for spacing
+    studentsDiv.appendChild(document.createElement('BR'));
+});
+
+
 
 var gradesUsed = [];
 var studentName = [];
@@ -180,11 +207,11 @@ function filterStudentsFromDropDown(students){
 
 
 
-const studentsInGroup = students.filter(student => student.classes.includes("group"));
-console.log(studentsInGroup)
+// const studentsInGroup = students.filter(student => student.classes.includes("group"));
+// console.log(studentsInGroup)
 
-const studentsInIndividual = students.filter(student => student.classes.includes("individual"));
-console.log(studentsInIndividual)
+// const studentsInIndividual = students.filter(student => student.classes.includes("individual"));
+// console.log(studentsInIndividual)
 
 
 
