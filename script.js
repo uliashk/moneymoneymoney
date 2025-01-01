@@ -88,23 +88,19 @@ const students = [
 //grade 8
     {
     
-    "name": "Рада Твердюк",
+    "name": "Рада Михайленко",
     "grade": 8,
     "classes": ["individual"]
     },
 ];
 
-var studentProfile = [];
 
-console.log(students.length)
 
 students.forEach(function (student) {
     const studentsDiv = document.getElementById('students');
 
-    // Create a label element
     let label = document.createElement('LABEL');
 
-    // Create a checkbox input element
     let newCheckbox = document.createElement('INPUT');
     newCheckbox.setAttribute("type", "checkbox");
     newCheckbox.setAttribute("id", student.name);
@@ -149,8 +145,7 @@ for(var i=0;i<gradesUsed.length;i++){
     document.getElementById('grade-selector').appendChild(opt);
 }
 
-const nameDropdown = document.getElementById('student-name');
-
+const studentsCard = document.getElementById('students');
 
 document.getElementById('grade-selector').addEventListener("change", (event) => {
     const gradeSelector = document.getElementById('grade-selector');
@@ -169,18 +164,19 @@ document.getElementById('grade-selector').addEventListener("change", (event) => 
 
     };
 
-    filterStudentsFromDropDown(filteredStudents);
+    filterStudentsFromList(filteredStudents);
 });
 
-function filterStudentsFromDropDown(students){
+function filterStudentsFromList(students){
     
-    nameDropdown.innerHTML = '<option value="">Select students name</option>';
+    //nameDropdown.innerHTML = '<option value="">Select students name</option>';
     
     students.forEach(function (student) {
-        var opt = document.createElement('option');
-        opt.value = studentName;
-        opt.innerHTML = (`${student.name}`);
-        nameDropdown.appendChild(opt);
+        let label = document.createElement('LABEL');
+        var opt = document.createElement('ladel');
+        label.value = studentName;
+        label.innerHTML = (`${student.name}`);
+        studentsCard.appendChild(opt);
         //console.log(`${student.name}`);
     });
 
