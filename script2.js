@@ -156,28 +156,38 @@ document.getElementById('grade-selector').addEventListener('change', function() 
 
 
 document.getElementById("group").addEventListener('change', function() {
-
     const groupCheckbox = document.getElementById("group");
+    const individualCheckbox = document.getElementById("individual");
 
     let filteredStudents;
-    if (groupCheckbox.checked) {
+
+    if (groupCheckbox.checked && individualCheckbox.checked) {
+        filteredStudents = filterStudents(student =>
+            student.classes.includes("group") && student.classes.includes("individual")
+        );
+    } else if (groupCheckbox.checked) {
         filteredStudents = filterStudents(student => student.classes.includes("group"));
     } else {
-        filteredStudents = students
+        filteredStudents = students;
     }
 
     renderStudentCheckboxes(filteredStudents);
 });
 
 document.getElementById("individual").addEventListener('change', function() {
-
+    const groupCheckbox = document.getElementById("group");
     const individualCheckbox = document.getElementById("individual");
 
     let filteredStudents;
-    if (individualCheckbox.checked) {
-        filteredStudents = filterStudents(student => student.classes.includes("individual"));
+
+    if (groupCheckbox.checked && individualCheckbox.checked) {
+        filteredStudents = filterStudents(student =>
+            student.classes.includes("group") && student.classes.includes("individual")
+        );
+    } else if (individualCheckbox.checked) {
+            filteredStudents = filterStudents(student => student.classes.includes("individual"));    
     } else {
-        filteredStudents = students
+        filteredStudents = students;
     }
 
     renderStudentCheckboxes(filteredStudents);
