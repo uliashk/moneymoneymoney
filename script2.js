@@ -144,10 +144,44 @@ function filterStudents(conditionFn) {
 document.getElementById('grade-selector').addEventListener('change', function() {
     const gradeSelector = document.getElementById('grade-selector');
     const selectedValue = parseInt(gradeSelector.value);
-    const filteredStudents = filterStudents(student => student.grade === selectedValue);
+    let filteredStudents;
+    if (isNaN(selectedValue)) {
+        filteredStudents = students; 
+    } else {
+        filteredStudents = filterStudents(student => student.grade === selectedValue);
+    }
+
     renderStudentCheckboxes(filteredStudents);
 });
 
+
+document.getElementById("group").addEventListener('change', function() {
+
+    const groupCheckbox = document.getElementById("group");
+
+    let filteredStudents;
+    if (groupCheckbox.checked) {
+        filteredStudents = filterStudents(student => student.classes.includes("group"));
+    } else {
+        filteredStudents = students
+    }
+
+    renderStudentCheckboxes(filteredStudents);
+});
+
+document.getElementById("individual").addEventListener('change', function() {
+
+    const individualCheckbox = document.getElementById("individual");
+
+    let filteredStudents;
+    if (individualCheckbox.checked) {
+        filteredStudents = filterStudents(student => student.classes.includes("individual"));
+    } else {
+        filteredStudents = students
+    }
+
+    renderStudentCheckboxes(filteredStudents);
+});
 
 function renderStudentCheckboxes(filteredStudents) {
     const studentsDiv = document.getElementById('students');
